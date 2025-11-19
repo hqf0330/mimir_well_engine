@@ -1,0 +1,32 @@
+[package]
+name = "mimir_well_engine"
+version = "0.1.0"
+edition = "2021"
+authors = ["binghu <hqf0330@gamil.com>"]
+description = ""
+license = ""
+repository = ""
+readme = "README.md"
+keywords = ["rust", "cli", "template"]
+categories = ["command-line-utilities"]
+rust-version = "1.70"
+
+# Default metadata to ensure fields are not empty
+[package.metadata]
+default-license = "MIT"
+default-description = "A Rust project"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[lib]
+name = "mimir_well_engine"
+path = "src/lib.rs"
+
+[[bin]]
+name = "mimir_well_engine"
+path = "src/main.rs"
+
+[dependencies]
+
+[dev-dependencies]
+# Add development dependencies here if needed
