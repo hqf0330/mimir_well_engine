@@ -8,6 +8,7 @@ use quote::quote;
 pub fn manifest(_input: proc_macro::TokenStream) -> proc_macro::TokenStream {
    let expanded = quote! {
 
+        #[derive(Serialize, Deserialize, Debug, PartialEq, Eq, Hash, Clone)]
         #[serde(rename_all = "camelCase")]
         pub struct Manifest {
             pub catalog: String,
@@ -132,10 +133,12 @@ pub fn view(_input: proc_macro::TokenStream) -> proc_macro::TokenStream {
 #[proc_macro]
 pub fn data_source(_input: proc_macro::TokenStream) -> proc_macro::TokenStream {
     let expanded = quote! {
+        #[derive(Serialize, Deserialize, Debug, Default, PartialEq, Eq, Hash, Clone, Copy)]
         #[serde(rename_all = "UPPERCASE")]
         pub enum DataSource {
             #[serde(alias = "mysql")]
             MySQL,
+            #[default]
             #[serde(alias = "datafusion")]
             Datafusion,
             #[serde(alias = "postgres")]
@@ -150,8 +153,8 @@ pub fn data_source(_input: proc_macro::TokenStream) -> proc_macro::TokenStream {
 #[proc_macro]
 pub fn model(_input: proc_macro::TokenStream) -> proc_macro::TokenStream {
     let expanded = quote! {
-        #[derive(Serialize, Deserialize)]
-        #[serde(rename_all = "CamelCase")]
+        #[derive(Serialize, Deserialize, Debug, PartialEq, Eq, Hash, Clone)]
+        #[serde(rename_all = "camelCase")]
         pub struct Model {
             pub name: String,
 
@@ -245,7 +248,7 @@ pub fn column_level_operator(_input: proc_macro::TokenStream) -> proc_macro::Tok
 #[proc_macro]
 pub fn normalized_expr(_input: proc_macro::TokenStream) -> proc_macro::TokenStream {
     let expanded = quote! {
-        #[derive(Serialize, Deserialize, Debug, PartialEq, Eq, Hash, Clone, Copy)]
+        #[derive(SerializeDisplay, DeserializeFromStr, Debug, PartialEq, Eq, Hash)]
         pub struct NormalizedExpr {
             pub value: String,
             #[serde_with(alias = "type")]
