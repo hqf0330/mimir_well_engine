@@ -3,6 +3,9 @@
 **/*.rs.bk
 Cargo.lock
 
+# Project
+/wren-engine/
+
 # IDE
 .vscode/
 .idea/

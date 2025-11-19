@@ -3,20 +3,13 @@ name = "mimir_well_engine"
 version = "0.1.0"
 edition = "2021"
 authors = ["binghu <hqf0330@gamil.com>"]
-description = ""
-license = ""
+description = "A semantic layer engine service built with Rust and Axum"
+license = "MIT"
 repository = ""
 readme = "README.md"
-keywords = ["rust", "cli", "template"]
-categories = ["command-line-utilities"]
+keywords = ["rust", "semantic-layer", "sql-engine", "axum"]
+categories = ["web-programming", "database"]
 rust-version = "1.70"
-
-# Default metadata to ensure fields are not empty
-[package.metadata]
-default-license = "MIT"
-default-description = "A Rust project"
-
-# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
 [lib]
 name = "mimir_well_engine"
@@ -27,6 +20,34 @@ name = "mimir_well_engine"
 path = "src/main.rs"
 
 [dependencies]
+# Web framework
+axum = "0.7"
+tokio = { version = "1", features = ["full"] }
+tower = "0.4"
+tower-http = { version = "0.5", features = ["cors", "trace"] }
+
+# Serialization
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+
+# Error handling
+thiserror = "1"
+anyhow = "1"
+
+# Async traits
+async-trait = "0.1"
+
+# Logging
+tracing = "0.1"
+tracing-subscriber = { version = "0.3", features = ["env-filter"] }
+
+# Database (PostgreSQL)
+tokio-postgres = "0.7"
+deadpool-postgres = "0.11"
+
+# Base64 encoding (for MDL manifest)
+base64 = "0.21"
 
 [dev-dependencies]
-# Add development dependencies here if needed
+# Testing
+tokio-test = "0.4"

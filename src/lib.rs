@@ -1,27 +1,15 @@
-//! 
-//! 
-//! A Rust library generated from the hqf0330/template template.
+//! Mimir Well Engine
+//!
+//! 语义层引擎服务 - 基于 Rust 和 Axum 构建
+//! 参考 wren-engine 架构设计
 
-/// A simple function that returns a greeting message.
-/// 
-/// # Examples
-/// 
-/// ```
-/// use mimir_well_engine::greet;
-/// 
-/// assert_eq!(greet("World"), "Hello, World!");
-/// ```
-pub fn greet(name: &str) -> String {
-    format!("Hello, {}!", name)
-}
+pub mod api;
+pub mod config;
+pub mod connector;
+pub mod engine;
+pub mod error;
+pub mod mdl;
+pub mod model;
 
-#[cfg(test)]
-mod tests {
-    use super::*;
-
-    #[test]
-    fn test_greet() {
-        assert_eq!(greet("World"), "Hello, World!");
-        assert_eq!(greet("Rust"), "Hello, Rust!");
-    }
-}
+// 重新导出常用类型
+pub use error::{Error, Result};
