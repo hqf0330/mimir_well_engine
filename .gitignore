@@ -2,6 +2,7 @@
 /target/
 **/*.rs.bk
 Cargo.lock
+/mdl_macro/target/
 
 # Project
 /wren-engine/
